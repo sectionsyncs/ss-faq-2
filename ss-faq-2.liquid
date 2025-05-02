@@ -1,0 +1,200 @@
+{{ 'ss-faq-2.css' | asset_url | stylesheet_tag }}
+{% style %}
+    #shopify-section-{{ section.id }} {
+        --ss-section-background: {{ section.settings.background_color.red }}, {{ section.settings.background_color.green }}, {{ section.settings.background_color.blue }};
+        --ss-main-title-color: {{ section.settings.main_title_color.red }}, {{ section.settings.main_title_color.green }}, {{ section.settings.main_title_color.blue }};
+        /* Close Faq */
+        --ss-faq-card-background: {{ section.settings.faq_background_color.red }}, {{ section.settings.faq_background_color.green }}, {{ section.settings.faq_background_color.blue }};
+        --ss-button-background-color: {{ section.settings.button_background_color.red }}, {{ section.settings.button_background_color.green }}, {{ section.settings.button_background_color.blue }};
+        --ss-button-text-color: {{ section.settings.button_text_color.red }}, {{ section.settings.button_text_color.green }}, {{ section.settings.button_text_color.blue }};
+        --ss-section-text-color: {{ section.settings.section_text_color.red }}, {{ section.settings.section_text_color.green }}, {{ section.settings.section_text_color.blue }}; 
+        /* Open Faq */ 
+        --ss-faq-card-background-open: {{ section.settings.faq_background_color_open.red }}, {{ section.settings.faq_background_color_open.green }}, {{ section.settings.faq_background_color_open.blue }};
+        --ss-button-background-color-open: {{ section.settings.button_background_color_open.red }}, {{ section.settings.button_background_color_open.green }}, {{ section.settings.button_background_color_open.blue }};
+        --ss-button-text-color-open: {{ section.settings.button_text_color_open.red }}, {{ section.settings.button_text_color_open.green }}, {{ section.settings.button_text_color_open.blue }};
+        --ss-section-text-color-open: {{ section.settings.section_text_color_open.red }}, {{ section.settings.section_text_color_open.green }}, {{ section.settings.section_text_color_open.blue }};
+    }
+{% endstyle %}
+<div class="ss-inner-container">
+    <div class="ss-main-title-wrapper">
+        <h2 class="ss-main-title">{{ section.settings.main_title }}</h2>
+    </div>
+    <div class="ss-faqs-wrapper">
+        {% for block in section.blocks %}
+            <faq-wrapper class="ss-faq-wrapper" {{ block.shopify_attributes}}>
+                <div class="ss-faq-question">
+                    <h3> <span class="count">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span> {{ block.settings.question }}</h3>
+                    <div class="ss-svg-wrapper">
+                        <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path class="line1" d="M8.46289 1.229V15.229" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path class="line2" d="M1.46289 8.229H15.4629" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="ss-ans-outer">
+                    <div class="ss-faq-answer">
+                        {{ block.settings.answer }}
+                    </div>
+                </div>
+            </faq-wrapper>
+        {% endfor %}
+    </div>
+</div>
+<script>
+    if(!customElements.get('faq-wrapper')){
+        class FaqWrapper extends HTMLElement {
+            constructor(){
+                super();
+                this.querySelector('.ss-faq-question').addEventListener('click', this.tglAttribute.bind(this));
+            }
+
+            tglAttribute = () => {
+                this.toggleAttribute('open')
+                if(this.hasAttribute('open')){
+                    this.querySelector('.ss-ans-outer').style.height = this.querySelector('.ss-ans-outer').scrollHeight + 'px';
+                } else {
+                    this.querySelector('.ss-ans-outer').style.height = 0;
+                }
+            }
+        }
+        customElements.define('faq-wrapper', FaqWrapper);
+    }
+</script>
+{% schema %}
+{
+    "name": "SS FAQ 2",
+    "class": "ss-faq-2",
+    "presets": [
+        {
+            "name":"SS FAQ 2" 
+        }
+    ],
+    "settings": [
+        {
+            "type": "header",
+            "content": "Main Title Settings"
+        },
+        {
+            "type": "text",
+            "id": "main_title",
+            "label": "Text",
+            "default": "Frequently Asked Questions"
+        },
+        {
+            "type": "color",
+            "id": "main_title_color",
+            "label": "Main Title Color",
+            "default": "#000000"
+        },
+        {
+            "type": "header",
+            "content": "Section Color Settings"
+        },
+        {
+            "type": "color",
+            "id": "background_color",
+            "label": "Background Color",
+            "default": "#f7f7fb"
+        },
+        {
+            "type": "header",
+            "content": "FAQ Settings"
+        },
+        {
+            "type": "header",
+            "content": "Close FAQ Color Settings",
+        },
+        {
+            "type": "color",
+            "id": "faq_background_color",
+            "label": "FAQ Background Color",
+            "default": "#FFFFFF"
+        },
+        {
+            "type": "color",
+            "id": "button_background_color",
+            "label": "Button Background Color",
+            "default": "#FFFFFF"
+        },
+        {
+            "type": "color",
+            "id": "button_text_color",
+            "label": "Button Text Color",
+            "default": "#4a3aff"
+        },
+        {
+            "type": "color",
+            "id": "section_text_color",
+            "label": "Section Text Color",
+            "default": "#170F49"
+        },
+        {
+            "type": "header",
+            "content": "Open FAQ Color Settings",
+        },
+        {
+            "type": "color",
+            "id": "faq_background_color_open",
+            "label": "FAQ Background Color",
+            "default": "#FFFFFF"
+        },
+        {
+            "type": "color",
+            "id": "button_background_color_open",
+            "label": "Button Background Color",
+            "default": "#4a3aff"
+        },
+        {
+            "type": "color",
+            "id": "button_text_color_open",
+            "label": "Button Text Color",
+            "default": "#FFFFFF"
+        },
+        {
+            "type": "color",
+            "id": "section_text_color_open",
+            "label": "Section Text Color",
+            "default": "#000000"
+        },
+        {
+            "type": "header",
+            "content": "Icon Settings"
+        },
+        {
+            "type": "select",
+            "id": "icon_type",
+            "label": "Type",
+            "options": [
+                {
+                    "value": "arrow",
+                    "label": "Arrow"
+                },
+                {
+                    "value": "plus",
+                    "label": "Plus"
+                }
+            ]
+        },
+    ],
+    "blocks": [
+        {
+            "type": "faq",
+            "name": "FAQ",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "question",
+                    "label": "Question",
+                    "default": "What is Lorem Ipsum?",
+                },
+                {
+                    "type": "richtext",
+                    "id": "answer",
+                    "label": "Answer",
+                    "default": "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>",
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

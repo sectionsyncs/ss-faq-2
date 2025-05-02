@@ -1,0 +1,135 @@
+.ss-faq-2 * {
+  padding: 0;
+  margin: 0;
+  border: none;
+  box-shadow: none;
+  outline: none;
+  min-width: unset;
+  min-height: unset;
+  max-width: unset;
+  max-height: unset;
+}
+.ss-faq-2 .ss-inner-container {
+  background-color: rgba(var(--ss-section-background), 1);
+  padding: 80px 20px;
+}
+.ss-faq-2 .ss-inner-container .ss-main-title-wrapper .ss-main-title {
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 1.2;
+  color: rgba(var(--ss-main-title-color), 1);
+  text-align: center;
+  margin-bottom: 60px;
+}
+.ss-faq-2 .ss-inner-container .ss-faqs-wrapper {
+  max-width: 896px;
+  margin: 0 auto;
+}
+.ss-faq-2 .ss-inner-container .ss-faqs-wrapper .ss-faq-wrapper {
+  display: block;
+  background-color: rgba(var(--ss-faq-card-background), 1);
+  transition: all 0.3s ease-in-out;
+  padding: 30px 20px;
+  transition: all 0.3s ease-in-out;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+@media screen and (max-width: 749px) {
+  .ss-faq-2 .ss-inner-container .ss-faqs-wrapper .ss-faq-wrapper {
+    padding: 20px 20px;
+  }
+}
+.ss-faq-2 .ss-inner-container .ss-faqs-wrapper .ss-faq-wrapper:first-child {
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+.ss-faq-2 .ss-inner-container .ss-faqs-wrapper .ss-faq-wrapper .ss-faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+@media screen and (max-width: 749px) {
+  .ss-faq-2 .ss-inner-container .ss-faqs-wrapper .ss-faq-wrapper .ss-faq-question {
+    align-items: flex-end;
+  }
+}
+.ss-faq-2 .ss-inner-container .ss-faqs-wrapper .ss-faq-wrapper .ss-faq-question h3 {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 120%;
+  color: rgba(var(--ss-section-text-color), 1);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+@media screen and (max-width: 749px) {
+  .ss-faq-2 .ss-inner-container .ss-faqs-wrapper .ss-faq-wrapper .ss-faq-question h3 {
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 25px;
+  }
+}
+.ss-faq-2 .ss-inner-container .ss-faqs-wrapper .ss-faq-wrapper .ss-faq-question h3 .count {
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 120%;
+  letter-spacing: 0.25px;
+  color: #9D96A8;
+}
+@media screen and (max-width: 749px) {
+  .ss-faq-2 .ss-inner-container .ss-faqs-wrapper .ss-faq-wrapper .ss-faq-question h3 .count {
+    font-size: 38px;
+  }
+}
+.ss-faq-2 .ss-inner-container .ss-faqs-wrapper .ss-faq-wrapper .ss-faq-question .ss-svg-wrapper {
+  width: 50px;
+  height: 50px;
+  flex: 0 0 50px;
+  background: rgba(var(--ss-button-background-color), 1);
+  box-shadow: 0px 5px 16px rgba(8, 15, 52, 0.06);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(var(--ss-button-text-color), 1);
+  transform: rotate(0deg);
+  transition: all 0.3s ease-in-out;
+}
+@media screen and (max-width: 749px) {
+  .ss-faq-2 .ss-inner-container .ss-faqs-wrapper .ss-faq-wrapper .ss-faq-question .ss-svg-wrapper {
+    width: 40px;
+    height: 40px;
+    flex: 0 0 40px;
+  }
+}
+.ss-faq-2 .ss-inner-container .ss-faqs-wrapper .ss-faq-wrapper .ss-faq-question .ss-svg-wrapper.plus-icon svg .line2 {
+  transition: all 0.3s ease-in-out;
+  opacity: 1;
+}
+.ss-faq-2 .ss-inner-container .ss-faqs-wrapper .ss-faq-wrapper .ss-ans-outer {
+  height: 0px;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+.ss-faq-2 .ss-inner-container .ss-faqs-wrapper .ss-faq-wrapper .ss-ans-outer .ss-faq-answer {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.67;
+  color: rgba(var(--ss-section-text-color), 0.65);
+}
+.ss-faq-2 .ss-inner-container .ss-faqs-wrapper .ss-faq-wrapper[open] {
+  background-color: rgba(var(--ss-faq-card-background-open), 1);
+}
+.ss-faq-2 .ss-inner-container .ss-faqs-wrapper .ss-faq-wrapper[open] h3 {
+  color: rgba(var(--ss-section-text-color-open), 1);
+}
+.ss-faq-2 .ss-inner-container .ss-faqs-wrapper .ss-faq-wrapper[open] .ss-faq-answer {
+  color: rgba(var(--ss-section-text-color-open), 1);
+}
+.ss-faq-2 .ss-inner-container .ss-faqs-wrapper .ss-faq-wrapper[open] .ss-svg-wrapper {
+  transform: rotate(45deg);
+  background: rgba(var(--ss-button-background-color-open), 1);
+  color: rgba(var(--ss-button-text-color-open), 1);
+}
+.ss-faq-2 .ss-inner-container .ss-faqs-wrapper .ss-faq-wrapper[open] .ss-svg-wrapper.plus-icon svg .line2 {
+  opacity: 0;
+}/*# sourceMappingURL=ss-faq-2.css.map */
